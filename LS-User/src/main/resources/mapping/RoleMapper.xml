@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.user.mapper.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.user.model.Role" >
+    <id column="OBJ_ID" property="objId" jdbcType="VARCHAR" />
+    <result column="ROLENAME" property="rolename" jdbcType="VARCHAR" />
+    <result column="ROLELEVEL" property="rolelevel" jdbcType="VARCHAR" />
+    <result column="BELONGROLEID" property="belongroleid" jdbcType="VARCHAR" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    OBJ_ID, ROLENAME, ROLELEVEL, BELONGROLEID, COMMENTS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where OBJ_ID = #{objId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from role
+    where OBJ_ID = #{objId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.user.model.Role" >
+    insert into role (OBJ_ID, ROLENAME, ROLELEVEL, 
+      BELONGROLEID, COMMENTS)
+    values (#{objId,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, #{rolelevel,jdbcType=VARCHAR}, 
+      #{belongroleid,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.user.model.Role" >
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        OBJ_ID,
+      </if>
+      <if test="rolename != null" >
+        ROLENAME,
+      </if>
+      <if test="rolelevel != null" >
+        ROLELEVEL,
+      </if>
+      <if test="belongroleid != null" >
+        BELONGROLEID,
+      </if>
+      <if test="comments != null" >
+        COMMENTS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        #{objId,jdbcType=VARCHAR},
+      </if>
+      <if test="rolename != null" >
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="rolelevel != null" >
+        #{rolelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="belongroleid != null" >
+        #{belongroleid,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.user.model.Role" >
+    update role
+    <set >
+      <if test="rolename != null" >
+        ROLENAME = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="rolelevel != null" >
+        ROLELEVEL = #{rolelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="belongroleid != null" >
+        BELONGROLEID = #{belongroleid,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        COMMENTS = #{comments,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OBJ_ID = #{objId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.user.model.Role" >
+    update role
+    set ROLENAME = #{rolename,jdbcType=VARCHAR},
+      ROLELEVEL = #{rolelevel,jdbcType=VARCHAR},
+      BELONGROLEID = #{belongroleid,jdbcType=VARCHAR},
+      COMMENTS = #{comments,jdbcType=VARCHAR}
+    where OBJ_ID = #{objId,jdbcType=VARCHAR}
+  </update>
+</mapper>

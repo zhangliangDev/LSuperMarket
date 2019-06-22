@@ -1,0 +1,50 @@
+spring:  
+  application:  
+    name: ACTIVEEUREKA  
+server:  
+  port: 8040   
+eureka:  
+  client:   
+    service-url:   
+      defaultZone: http://192.168.10.2:8761/eureka/
+    
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000  
+zuul:  
+  ignored-services: microservice-comsumer-movie-ribbon-withhystrix  
+  routes:  
+    test1:
+      path: /test/**
+      serviceId: ACTIVEEUREKA 
+    cashier:
+      path: /cashier/**
+      serviceId: CASHIERAPP
+    commodity:
+      path: /commodity/**
+      serviceId: COMMODITYAPP
+    counter:
+      path: /counter/**
+      serviceId: COUNTERAPP
+    promotion:
+      path: /promotion/**
+      serviceId: PROMOTIONAPP
+    user:
+      path: /user/**
+      serviceId: USERAPP
+    warehouse:
+      path: /warehouse/**
+      serviceId: WAREHOUSEAPP
+    financial:
+      path: /financial/**
+      serviceId: FINANCIALAPP
+    index:
+      path: /index/**
+      serviceId: INDEXAPP
+    marketingData:
+      path: /marketingData/**
+      serviceId: MARKETINGDATAAPP
+    permission:
+      path: /permission/**
+      serviceId: PERMISSIONAPP
+    tigger:
+      path: /tigger/**
+      serviceId: TIGGERAPP

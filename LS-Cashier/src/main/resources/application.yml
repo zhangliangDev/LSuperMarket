@@ -1,0 +1,9 @@
+spring:  
+  application:  
+    name: Cashier  
+server:  
+  port: 18081   
+eureka:
+  client:   
+    service-url:   
+      defaultZone: http://192.168.10.2:8761/eureka/

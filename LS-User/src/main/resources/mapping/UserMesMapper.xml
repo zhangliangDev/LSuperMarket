@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.user.mapper.UserMesMapper" >
+  <resultMap id="BaseResultMap" type="com.user.model.UserMes" >
+    <id column="OBJ_ID" property="objId" jdbcType="VARCHAR" />
+    <result column="USERID" property="userid" jdbcType="VARCHAR" />
+    <result column="NAMES" property="names" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="PHONENUMBER" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="IDCARD" property="idcard" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="WORKNUM" property="worknum" jdbcType="VARCHAR" />
+    <result column="POST" property="post" jdbcType="VARCHAR" />
+    <result column="CONTACTNAME" property="contactname" jdbcType="VARCHAR" />
+    <result column="CONTACTCALL" property="contactcall" jdbcType="VARCHAR" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    OBJ_ID, USERID, NAMES, SEX, PHONENUMBER, IDCARD, EMAIL, ADDR, WORKNUM, POST, CONTACTNAME, 
+    CONTACTCALL, COMMENTS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from usermes
+    where OBJ_ID = #{objId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from usermes
+    where OBJ_ID = #{objId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.user.model.UserMes" >
+    insert into usermes (OBJ_ID, USERID, NAMES, 
+      SEX, PHONENUMBER, IDCARD, 
+      EMAIL, ADDR, WORKNUM, 
+      POST, CONTACTNAME, CONTACTCALL, 
+      COMMENTS)
+    values (#{objId,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{names,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{worknum,jdbcType=VARCHAR}, 
+      #{post,jdbcType=VARCHAR}, #{contactname,jdbcType=VARCHAR}, #{contactcall,jdbcType=VARCHAR}, 
+      #{comments,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.user.model.UserMes" >
+    insert into usermes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        OBJ_ID,
+      </if>
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="names != null" >
+        NAMES,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="phonenumber != null" >
+        PHONENUMBER,
+      </if>
+      <if test="idcard != null" >
+        IDCARD,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="worknum != null" >
+        WORKNUM,
+      </if>
+      <if test="post != null" >
+        POST,
+      </if>
+      <if test="contactname != null" >
+        CONTACTNAME,
+      </if>
+      <if test="contactcall != null" >
+        CONTACTCALL,
+      </if>
+      <if test="comments != null" >
+        COMMENTS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        #{objId,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="names != null" >
+        #{names,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="worknum != null" >
+        #{worknum,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null" >
+        #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="contactcall != null" >
+        #{contactcall,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.user.model.UserMes" >
+    update usermes
+    <set >
+      <if test="userid != null" >
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="names != null" >
+        NAMES = #{names,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        PHONENUMBER = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        IDCARD = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="worknum != null" >
+        WORKNUM = #{worknum,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        POST = #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null" >
+        CONTACTNAME = #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="contactcall != null" >
+        CONTACTCALL = #{contactcall,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        COMMENTS = #{comments,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OBJ_ID = #{objId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.user.model.UserMes" >
+    update usermes
+    set USERID = #{userid,jdbcType=VARCHAR},
+      NAMES = #{names,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      PHONENUMBER = #{phonenumber,jdbcType=VARCHAR},
+      IDCARD = #{idcard,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      WORKNUM = #{worknum,jdbcType=VARCHAR},
+      POST = #{post,jdbcType=VARCHAR},
+      CONTACTNAME = #{contactname,jdbcType=VARCHAR},
+      CONTACTCALL = #{contactcall,jdbcType=VARCHAR},
+      COMMENTS = #{comments,jdbcType=VARCHAR}
+    where OBJ_ID = #{objId,jdbcType=VARCHAR}
+  </update>
+</mapper>
